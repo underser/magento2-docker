@@ -1,0 +1,93 @@
+version: '2'
+services:
+  apache:
+    image: rafaelcgstz/magento2
+    container_name: <project>_apache
+    ports:
+      - "80:80" # web
+      - "9001:9000" # xdebug
+      # - "35729:35729" # live reload
+    volumes:
+      - ./src:/var/www/html
+      - ~/.composer:/var/www/.composer
+      - ~/.npm:/var/www/.npm
+      # - ~/.nvm:/var/www/.nvm
+    environment:
+      XDEBUG_CONFIG: "remote_host=localhost"
+      PHP_IDE_CONFIG: "serverName=Docker"
+    depends_on:
+      - db
+    links:
+      - db
+    networks:
+      - <project>-network
+
+  db:
+    image: mariadb
+    container_name: <project>_db
+    ports:
+     - 3300:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=magento
+      - MYSQL_DATABASE=magento
+      - MYSQL_USER=magento
+      - MYSQL_PASSWORD=magento
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./src:/home
+    networks:
+      - <project>-network
+
+  redis:
+    image: redis
+    container_name: <project>_redis
+    ports:
+     - 6379
+    networks:
+      - <project>-network
+
+  redis-session:
+    image: redis
+    container_name: <project>_redis-session
+    ports:
+     - 6379
+    networks:
+      - <project>-network
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: <project>_mailhog
+    ports:
+      - 1025:1025
+      - 8025:8025
+    networks:
+      - <project>-network
+
+  elasticsearch:
+    image: elasticsearch:2.4
+    container_name: <project>_elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearchdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - <project>-network
+    command: >
+        bash -c "plugin install analysis-phonetic
+        && plugin install analysis-icu && /bin/bash"
+
+networks:
+  <project>-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
