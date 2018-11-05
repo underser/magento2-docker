@@ -8,6 +8,7 @@ sed -i '' -e "s/<project>/$project/g" ./config/env.php
 
 cd src
 if [ $repo ]; then
+    rm -rf index.php
     git clone $repo .
 elif [ ! -e ./index.php ]; then
     echo "<?php phpinfo();" > ./index.php;
