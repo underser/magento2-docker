@@ -52,6 +52,14 @@ If you want execute ./bin/magento, simply do:
 ```
 ./magento <command>
 ```
+
+During development you can fetch problem with permissions,
+for example, when php process write file to your working directory,
+and on host machine you can't change that file, to resolve this exec:
+```
+./permission
+```
+<sub>this will make sure that your host user id equals user id in container</sub>
 ### License
 
 MIT © 2018 [Roman Sliusar](https://github.com/underser/)

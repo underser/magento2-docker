@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+docker-compose exec --user root apache usermod -u $(id -u $USER) www-data
+docker-compose exec --user root apache service apache2 restart
+docker-compose up -d apache
