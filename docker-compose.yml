@@ -8,10 +8,13 @@ services:
       - "9001:9000" # xdebug
       # - "35729:35729" # live reload
     volumes:
-      - ./src:/var/www/html
-      - ~/.composer:/var/www/.composer
+      - ./src/app/code:/var/www/html/app/code:delegated
+      - ./src/app/design:/var/www/html/app/design:delegated
+      - ./src/app/etc:/var/www/html/app/etc:delegated
+      - ~/.composer:/var/www/.composer:delegated
+      - ./src/composer.json:/var/www/html/composer.json:delegated
+      - ./src/composer.lock:/var/www/html/composer.lock:delegated
       - ~/.npm:/var/www/.npm
-      # - ~/.nvm:/var/www/.nvm
     environment:
       XDEBUG_CONFIG: "remote_host=localhost"
       PHP_IDE_CONFIG: "serverName=Docker"
