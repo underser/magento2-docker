@@ -16,7 +16,7 @@ services:
       - ./src/composer.lock:/var/www/html/composer.lock:delegated
       - ~/.npm:/var/www/.npm
     environment:
-      XDEBUG_CONFIG: "remote_host=localhost"
+      XDEBUG_CONFIG: "remote_host=localhost" # if you use OS X - change to --- "remote_host=10.254.254.254 remote_connect_back=0"
       PHP_IDE_CONFIG: "serverName=Docker"
     depends_on:
       - db
