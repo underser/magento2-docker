@@ -1,7 +1,7 @@
 version: '2'
 services:
   apache:
-    image: rafaelcgstz/magento2
+    image: underser/magento2
     container_name: <project>_apache
     ports:
       - "80:80" # web
