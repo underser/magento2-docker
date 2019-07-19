@@ -1,4 +1,4 @@
-FROM php:7.1-apache
+FROM php:7.1-apache-stretch
 
 MAINTAINER Roman Sliusar <roman.slusar95@gmail.com> forked from Rafael Corrêa Gomes <rafaelcgstz@gmail.com>
 
@@ -22,7 +22,7 @@ RUN apt-get update \
     apt-utils \
     gnupg \
     redis-tools \
-    mariadb-client \
+    default-mysql-client \
     git \
     vim \
     wget \
