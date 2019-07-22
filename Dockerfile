@@ -1,4 +1,4 @@
-FROM php:7.1-apache-stretch
+FROM php:7.2-apache-stretch
 
 MAINTAINER Roman Sliusar <roman.slusar95@gmail.com> forked from Rafael Corrêa Gomes <rafaelcgstz@gmail.com>
 
@@ -45,11 +45,16 @@ RUN docker-php-ext-configure \
     bcmath \
     intl \
     mbstring \
-    mcrypt \
     pdo_mysql \
     soap \
     xsl \
     zip
+
+# Install libsodium - required by Magento 2.3.2
+
+RUN echo "deb http://deb.debian.org/debian stretch-backports main" >> /etc/apt/sources.list
+RUN apt-get update && apt-get -t stretch-backports install -y libsodium-dev
+RUN docker-php-ext-install sodium
 
 # Install oAuth
 
