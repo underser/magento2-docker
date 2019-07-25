@@ -60,6 +60,13 @@ and on host machine you can't change that file, to resolve this exec:
 ./permission
 ```
 <sub>this will make sure that your host user id equals user id in container</sub>
+
+Note: If you use OS X - to make XDebug working
+exec this command in terminal
+```
+ifconfig lo0 alias 10.254.254.254
+```
+
 ### License
 
 MIT © 2018 [Roman Sliusar](https://github.com/underser/)
