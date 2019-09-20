@@ -7,6 +7,7 @@ sed -i '' -e "s/<project>/$project/g" ./docker-compose.yml
 sed -i '' -e "s/<project>/$project/g" ./bin/copyfromcontainer
 sed -i '' -e "s/<project>/$project/g" ./bin/copytocontainer
 sed -i '' -e "s/<project>/$project/g" ./config/env.php
+sed -i '' -e "s/<project>/$project/g" ./varnish/default.vcl
 
 cd src
 if [ $repo ]; then

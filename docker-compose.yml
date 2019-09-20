@@ -4,7 +4,7 @@ services:
     image: underser/magento2
     container_name: <project>_apache
     ports:
-      - "80:80" # web
+      - "8080:8080" # don't forget change apache configuration, /etc/apache2/ports.conf|sites-available/magento.conf
       - "9001:9000" # xdebug
       # - "35729:35729" # live reload
     volumes:
@@ -22,6 +22,20 @@ services:
       - db
     links:
       - db
+    networks:
+      - <project>-network
+
+  varnish:
+    container_name: <project>_varnish
+    build:
+      context: ./varnish
+      dockerfile: Dockerfile
+    ports:
+      - "80:80" # web
+    depends_on:
+      - apache
+    links:
+      - apache
     networks:
       - <project>-network
 

@@ -114,5 +114,10 @@ return [
                 ]
             ]
         ]
+    ],
+    'http_cache_hosts' => [
+        [
+            'host' => '<project>_varnish'
+        ]
     ]
 ];
