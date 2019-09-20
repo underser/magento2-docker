@@ -106,6 +106,8 @@ RUN wget https://files.magerun.net/n98-magerun2.phar \
 # Configuring system
 
 ADD .docker/config/php.ini /usr/local/etc/php/php.ini
+ADD .docker/config/ssl/cert.crt /etc/ssl/certs/cert.crt
+ADD .docker/config/ssl/cert_key.key /etc/ssl/private/cert_key.key
 ADD .docker/config/magento.conf /etc/apache2/sites-available/magento.conf
 ADD .docker/config/custom-xdebug.ini /usr/local/etc/php/conf.d/custom-xdebug.ini
 COPY .docker/bin/* /usr/local/bin/
@@ -123,7 +125,8 @@ RUN chmod 777 -Rf /var/www /var/www/.* \
     && usermod -u 1000 www-data \
     && chsh -s /bin/bash www-data\
     && a2enmod rewrite \
-    && a2enmod headers
+    && a2enmod headers \
+    && a2enmod ssl
 
 VOLUME /var/www/html
 WORKDIR /var/www/html
