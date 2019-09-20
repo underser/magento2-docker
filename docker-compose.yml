@@ -1,10 +1,13 @@
 version: '2'
 services:
   apache:
-    image: underser/magento2
+    build:
+      context: ./
+      dockerfile: Dockerfile
     container_name: <project>_apache
     ports:
       - "8080:8080" # don't forget change apache configuration, /etc/apache2/ports.conf|sites-available/magento.conf
+      - "443:443"
       - "9001:9000" # xdebug
       # - "35729:35729" # live reload
     volumes:

@@ -106,7 +106,10 @@ RUN wget https://files.magerun.net/n98-magerun2.phar \
 # Configuring system
 
 ADD .docker/config/php.ini /usr/local/etc/php/php.ini
+ADD .docker/config/ssl/cert.crt /etc/ssl/certs/cert.crt
+ADD .docker/config/ssl/cert_key.key /etc/ssl/private/cert_key.key
 ADD .docker/config/magento.conf /etc/apache2/sites-available/magento.conf
+ADD .docker/config/ports.conf /etc/apache2/ports.conf
 ADD .docker/config/custom-xdebug.ini /usr/local/etc/php/conf.d/custom-xdebug.ini
 COPY .docker/bin/* /usr/local/bin/
 COPY .docker/users/* /var/www/
