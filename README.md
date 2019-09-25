@@ -4,7 +4,7 @@
 
 First of all, thank [rafaelstz](https://github.com/rafaelstz) this project is based on its [developments](https://github.com/clean-docker/Magento2)
 
-### Apache 2.4 + PHP 7.1 + OPCache + MariaDB + N98 Magerun 2 + XDebug + Redis + Elasticsearch
+### Apache 2.4 + PHP 7.2 + OPCache + MariaDB + N98 Magerun 2 + XDebug + Redis + Elasticsearch + Varnish5
 
 ### Requirements
 
