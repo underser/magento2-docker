@@ -1,14 +1,15 @@
 version: '2'
 services:
-  apache:
-    image: underser/magento2
-    container_name: <project>_apache
+  nginx:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: <project>_nginx
     ports:
-      - "80:80" # web
-      - "443:443"
+      - "80:8000" # web
+      - "443:8443"
       - "9001:9000" # xdebug
-      # - "35729:35729" # live reload
-    volumes:
+    volumes: &appvolumes
       - ./src/app/code:/var/www/html/app/code:delegated
       - ./src/app/design:/var/www/html/app/design:delegated
       - ./src/app/etc:/var/www/html/app/etc:delegated
@@ -16,11 +17,21 @@ services:
       - ./src/composer.json:/var/www/html/composer.json:delegated
       - ./src/composer.lock:/var/www/html/composer.lock:delegated
       - ~/.npm:/var/www/.npm
-    environment:
-      XDEBUG_CONFIG: "remote_host=localhost" # if you use OS X - change to --- "remote_host=10.254.254.254 remote_connect_back=0"
-      PHP_IDE_CONFIG: "serverName=Docker"
+      - sockdata:/sock
     depends_on:
       - db
+    links:
+      - db
+      - phpfpm
+    networks:
+      - <project>-network
+
+  phpfpm:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    container_name: <project>_phpfpm
+    volumes: *appvolumes
     links:
       - db
     networks:
@@ -95,3 +106,4 @@ networks:
 volumes:
   dbdata:
     driver: local
+  sockdata:

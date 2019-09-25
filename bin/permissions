@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
-docker-compose exec --user root apache usermod -u $(id -u $USER) www-data
-docker-compose exec --user root apache service apache2 restart
-docker-compose up -d apache
+docker-compose exec --user root nginx usermod -u $(id -u $USER) www-data
+docker-compose exec --user root nginx chown -R www-data:www-data /etc/nginx /var/www /var/cache/nginx /var/run/nginx.pid /sock
+docker-compose exec --user root nginx service nginx restart
+docker-compose up -d nginx
