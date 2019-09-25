@@ -95,9 +95,6 @@ services:
       - 9200:9200
     networks:
       - <project>-network
-    command: >
-        bash -c "plugin install analysis-phonetic
-        && plugin install analysis-icu && /bin/bash"
 
 networks:
   <project>-network:
