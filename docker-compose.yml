@@ -17,7 +17,7 @@ services:
       - ./src/composer.json:/var/www/html/composer.json:delegated
       - ./src/composer.lock:/var/www/html/composer.lock:delegated
       - ~/.npm:/var/www/.npm
-      - sockdata:/sock
+      - <project>_sockdata:/sock
     depends_on:
       - db
     links:
@@ -103,4 +103,4 @@ networks:
 volumes:
   dbdata:
     driver: local
-  sockdata:
+  <project>_sockdata:

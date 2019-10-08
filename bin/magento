@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker-compose exec --user www-data nginx /var/www/html/bin/magento $@
+docker-compose exec --user www-data phpfpm /var/www/html/bin/magento $@
