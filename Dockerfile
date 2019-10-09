@@ -1,4 +1,4 @@
-FROM php:7.2-apache-stretch
+FROM php:7.3-apache-stretch
 
 MAINTAINER Roman Sliusar <roman.slusar95@gmail.com> forked from Rafael Corrêa Gomes <rafaelcgstz@gmail.com>
 
@@ -19,6 +19,7 @@ RUN apt-get update \
     libedit-dev \
     libedit2 \
     libxslt1-dev \
+    libzip-dev \
     apt-utils \
     gnupg \
     redis-tools \
