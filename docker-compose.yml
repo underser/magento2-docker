@@ -68,7 +68,7 @@ services:
       - <project>-network
 
   elasticsearch:
-    image: elasticsearch:2.4
+    image: elasticsearch:6.8.1
     container_name: <project>_elasticsearch
     environment:
       - cluster.name=docker-cluster
