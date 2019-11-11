@@ -8,7 +8,6 @@ services:
     ports:
       - "80:8000" # web
       - "443:8443"
-      - "9001:9000" # xdebug
     volumes: &appvolumes
       - ./src/app/code:/var/www/html/app/code:delegated
       - ./src/app/design:/var/www/html/app/design:delegated
