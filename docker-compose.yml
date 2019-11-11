@@ -16,6 +16,7 @@ services:
       - ./src/composer.json:/var/www/html/composer.json:delegated
       - ./src/composer.lock:/var/www/html/composer.lock:delegated
       - ~/.npm:/var/www/.npm
+      - ./src/nginx.conf.sample:/var/www/html/nginx.conf:delegated
       - <project>_appfilesystem:/var/www/html
       - <project>_sockdata:/sock
     depends_on:
