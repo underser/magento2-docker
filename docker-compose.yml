@@ -16,6 +16,7 @@ services:
       - ./src/composer.json:/var/www/html/composer.json:delegated
       - ./src/composer.lock:/var/www/html/composer.lock:delegated
       - ~/.npm:/var/www/.npm
+      - <project>_appfilesystem:/var/www/html
       - <project>_sockdata:/sock
     depends_on:
       - db
@@ -100,6 +101,7 @@ networks:
     driver: bridge
 
 volumes:
+  <project>_appfilesystem:
   dbdata:
     driver: local
   <project>_sockdata:
