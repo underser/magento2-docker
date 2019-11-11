@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-bin/cli bash
+
+docker exec -it -u root <project>_phpfpm bash
