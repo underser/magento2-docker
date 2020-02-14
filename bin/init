@@ -6,6 +6,7 @@ read -p "Link to your project git repo ? " repo
 sed -i '' -e "s/<project>/$project/g" ./docker-compose.yml
 sed -i '' -e "s/<project>/$project/g" ./bin/copyfromcontainer
 sed -i '' -e "s/<project>/$project/g" ./bin/copytocontainer
+sed -i '' -e "s/<project>/$project/g" ./bin/exec
 sed -i '' -e "s/<project>/$project/g" ./config/env.php
 
 cd src
