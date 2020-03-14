@@ -23,9 +23,7 @@ services:
       - <project>-network
 
   phpfpm:
-    build:
-      context: ./php
-      dockerfile: Dockerfile
+    image: underser/magento2_php-fpm
     container_name: <project>_phpfpm
     volumes: *appvolumes
     links:

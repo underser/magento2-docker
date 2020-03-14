@@ -29,7 +29,8 @@ RUN docker-php-ext-install \
   pdo_mysql \
   soap \
   xsl \
-  zip
+  zip \
+  sockets
 
 RUN echo "deb http://deb.debian.org/debian stretch-backports main" >> /etc/apt/sources.list
 
@@ -71,7 +72,7 @@ COPY ./config/php-fpm.conf /usr/local/etc/
 COPY bin/cronstart /usr/local/bin/
 
 RUN mkdir -p /etc/nginx/html /var/www/html /sock
-RUN chown -R www-data:www-data /etc/nginx /var/www /usr/local/etc/php/conf.d /sock
+RUN chown -R www-data:www-data /etc/nginx /etc/nginx/html /var/www /usr/local/etc/php/conf.d /sock
 
 USER www-data:www-data
 
