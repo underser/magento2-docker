@@ -1,9 +1,7 @@
 version: '2'
 services:
   nginx:
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    image: underser/magento2_nginx
     container_name: <project>_nginx
     ports:
       - "80:8000" # web
@@ -13,10 +11,7 @@ services:
       - ./src/app/design:/var/www/html/app/design:delegated
       - ./src/app/etc:/var/www/html/app/etc:delegated
       - ~/.composer:/var/www/.composer:delegated
-      - ./src/composer.json:/var/www/html/composer.json:delegated
-      - ./src/composer.lock:/var/www/html/composer.lock:delegated
       - ~/.npm:/var/www/.npm
-      - ./src/nginx.conf.sample:/var/www/html/nginx.conf:delegated
       - <project>_appfilesystem:/var/www/html
       - <project>_sockdata:/sock
     depends_on:
