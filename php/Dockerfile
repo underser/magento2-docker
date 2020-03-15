@@ -77,7 +77,7 @@ COPY ./config/php-fpm.conf /usr/local/etc/
 COPY bin/cronstart /usr/local/bin/
 
 RUN mkdir -p /etc/nginx/html /var/www/html /sock
-RUN chown -R www-data:www-data /etc/nginx /etc/nginx/html /var/www /usr/local/etc/php/conf.d /sock
+RUN chown -R www-data:www-data /etc/nginx /etc/nginx/html /var/cache/nginx/ /var/www /usr/local/etc/php/conf.d /sock
 
 USER www-data:www-data
 
