@@ -39,7 +39,7 @@ Copy all your files from host machine to container by running:
 ./bin/copytocontainer --all
 ```
 
-After initialization you'll get 6 docker containers running:
+After initialization you'll get 7 docker containers running:
 
 | Container  | Ports(host/container)  | Description  |
 |---|---|---|
