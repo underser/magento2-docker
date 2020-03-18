@@ -2,8 +2,6 @@
 
 # Docker for Magento 2 development
 
-First of all, thank [rafaelstz](https://github.com/rafaelstz) this project is based on its [developments](https://github.com/clean-docker/Magento2)
-
 ### Nginx 1.13 + (PHP 7.3 + OPCache + XDebug) + MariaDB + Redis + Elasticsearch 6.8
 
 ### Requirements
