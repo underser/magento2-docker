@@ -13,8 +13,6 @@ services:
       - ./src/app/design:/var/www/html/app/design:delegated
       - ./src/app/etc:/var/www/html/app/etc:delegated
       - ~/.composer:/var/www/.composer:delegated
-      - ./src/composer.json:/var/www/html/composer.json:delegated
-      - ./src/composer.lock:/var/www/html/composer.lock:delegated
       - ~/.npm:/var/www/.npm
     environment:
       XDEBUG_CONFIG: "remote_host=localhost" # if you use OS X - change to --- "remote_host=10.254.254.254 remote_connect_back=0"
