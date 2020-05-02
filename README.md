@@ -12,6 +12,9 @@ First of all, thank [rafaelstz](https://github.com/rafaelstz) this project is ba
 
 Install [Docker](https://docs.docker.com/docker-for-mac/install/), [Docker-compose](https://docs.docker.com/compose/install/#install-compose).
 
+**You can view quick video tutorial which give you brief overview:**
+![[Video tutorial how to install magento in your macos system](https://underser.github.io/static/apache-video-tutorial.png)](https://www.youtube.com/watch?v=OkTRY-AWQJw&t=1s)
+
 **Linux:**
 
 Install [Docker](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/) and [Docker-compose](https://docs.docker.com/compose/install/#install-compose).
