@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-stretch
+FROM php:7.4-fpm-buster
 
 MAINTAINER Roman Sliusar <roman.slusar95@gmail.com>
 
@@ -10,18 +10,18 @@ RUN apt-get update && apt-get install -y \
   libicu-dev \
   libjpeg62-turbo-dev \
   libmcrypt-dev \
+  libsodium-dev \
+  libonig-dev \
   libpng-dev \
   libxslt1-dev \
   lsof \
-  mysql-client \
+  default-mysql-client \
   vim \
   libzip-dev \
   zip
 
-RUN docker-php-ext-configure zip --with-libzip && docker-php-ext-install zip
-
 RUN docker-php-ext-configure \
-  gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+  gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
 
 RUN docker-php-ext-install \
   bcmath \
@@ -33,14 +33,11 @@ RUN docker-php-ext-install \
   soap \
   xsl \
   zip \
-  sockets
+  sockets \
+  sodium \
+  zip
 
 RUN echo "deb http://deb.debian.org/debian stretch-backports main" >> /etc/apt/sources.list
-
-RUN apt-get update && apt-get -t stretch-backports install -y \
-  libsodium-dev
-
-RUN pecl install -f libsodium-1.0.17
 
 RUN pecl channel-update pecl.php.net \
   && pecl install xdebug \
@@ -76,7 +73,7 @@ COPY ./config/php.ini /usr/local/etc/php/
 COPY ./config/php-fpm.conf /usr/local/etc/
 COPY bin/cronstart /usr/local/bin/
 
-RUN mkdir -p /etc/nginx/html /var/www/html /sock
+RUN mkdir -p /etc/nginx/html /var/cache/nginx/ /var/www/html /sock
 RUN chown -R www-data:www-data /etc/nginx /etc/nginx/html /var/cache/nginx/ /var/www /usr/local/etc/php/conf.d /sock
 
 USER www-data:www-data
