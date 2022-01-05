@@ -32,7 +32,7 @@ services:
       - <project>-network
 
   db:
-    image: mariadb
+    image: mariadb:10.4
     container_name: <project>_db
     ports:
      - 3300:3306
