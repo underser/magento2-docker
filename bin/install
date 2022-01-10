@@ -1,0 +1,6 @@
+#!/bin/bash
+
+read -p "Base URL (in https://domain.com format ? " base_url
+read -p "Database name ? " db_name
+
+bin/magento setup:install --base-url="$base_url" --base-url-secure="$base_url" --db-host="<project>_db" --db-name="$db_name" --db-user="magento" --db-password="magento" --admin-firstname="admin" --admin-lastname="admin" --admin-email="admin@admin.com" --admin-user="admin" --admin-password="admin123" --language="en_US" --currency="USD" --timezone="America/Chicago" --use-rewrites="1" --backend-frontname="admin" --elasticsearch-host="<project>_elasticsearch"
