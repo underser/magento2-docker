@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-buster
+FROM php:8.1-fpm-buster
 
 MAINTAINER Roman Sliusar <roman.slusar95@gmail.com>
 
@@ -45,7 +45,7 @@ RUN pecl channel-update pecl.php.net \
   && sed -i -e 's/^zend_extension/\;zend_extension/g' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 RUN apt-get install -y libssh2-1-dev \
-  && git clone https://git.php.net/repository/pecl/networking/ssh2.git /tmp/ssh2 \
+  && git clone https://github.com/php/pecl-networking-ssh2.git /tmp/ssh2 \
   && cd /tmp/ssh2 \
   && ./.travis/build.sh \
   && docker-php-ext-enable ssh2
