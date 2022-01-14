@@ -77,7 +77,7 @@ services:
     container_name: <project>_elasticsearch
     environment:
       - cluster.name=docker-cluster
-      - discovery.seed_hosts=es02,es03
+      - "discovery.type=single-node"
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
