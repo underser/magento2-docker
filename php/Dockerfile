@@ -18,7 +18,9 @@ RUN apt-get update && apt-get install -y \
   default-mysql-client \
   vim \
   libzip-dev \
-  zip
+  zip \
+  mailutils \
+  msmtp
 
 RUN docker-php-ext-configure \
   gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
@@ -76,6 +78,7 @@ RUN printf '* *\t* * *\tapp\t%s/usr/local/bin/php /var/www/html/bin/magento cron
 RUN printf '* *\t* * *\tapp\t%s/usr/local/bin/php /var/www/html/bin/magento setup:cron:run\n#\n' >> /etc/crontab
 
 COPY ./config/www.conf /usr/local/etc/php-fpm.d/
+COPY ./config/ /etc/msmtprc
 COPY ./config/php.ini /usr/local/etc/php/
 COPY ./config/php-fpm.conf /usr/local/etc/
 COPY bin/cronstart /usr/local/bin/
