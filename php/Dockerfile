@@ -1,4 +1,4 @@
-FROM php:8.1-fpm-buster
+FROM php:8.2-fpm-buster
 
 MAINTAINER Roman Sliusar <roman.slusar95@gmail.com>
 
@@ -56,7 +56,7 @@ RUN curl -sS https://getcomposer.org/installer | \
   php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN apt-get install -y gnupg \
-  && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+  && curl -sL https://deb.nodesource.com/setup_20.x | bash - \
   && apt-get install -y nodejs \
   && mkdir /var/www/.config /var/www/.npm \
   && chown www-data:www-data /var/www/.config /var/www/.npm \

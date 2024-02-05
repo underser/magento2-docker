@@ -32,7 +32,7 @@ services:
       - <project>-network
 
   db:
-    image: mariadb:10.4
+    image: mariadb:10.6
     container_name: <project>_db
     ports:
      - 3300:3306
@@ -72,7 +72,7 @@ services:
       - <project>-network
 
   elasticsearch:
-    image: elasticsearch:7.16.3
+    image: elasticsearch:8.5.3
     container_name: <project>_elasticsearch
     environment:
       - cluster.name=docker-cluster
